@@ -137,13 +137,13 @@ fi
 tput setaf 3;
 echo "Misskey setting";
 tput setaf 7;
-misskey_directory=misskey
+misskey_directory=calckey
 
 if [ $method != "docker_hub" ]; then
 	echo "Repository url where you want to install:"
 	read -r -p "> " -e -i "https://github.com/misskey-dev/misskey.git" repository;
 	echo "The name of a new directory to clone:"
-	read -r -p "> " -e -i "misskey" misskey_directory;
+	read -r -p "> " -e -i "calckey" misskey_directory;
 	echo "Branch or Tag"
 	read -r -p "> " -e -i "master" branch;
 fi
@@ -862,7 +862,7 @@ echo ""
 tput setaf 3;
 echo "Process: docker run;"
 tput setaf 7;
-docker_container=$(sudo -u "$misskey_user" XDG_RUNTIME_DIR=/run/user/$m_uid DOCKER_HOST=unix:///run/user/$m_uid/docker.sock docker run -d -p $misskey_port:$misskey_port --add-host=$misskey_localhost:$docker_host_ip -v "/home/$misskey_user/$misskey_directory/files":/misskey/files -v "/home/$misskey_user/$misskey_directory/.config/default.yml":/misskey/.config/default.yml:ro --restart unless-stopped -t "$docker_repository");
+docker_container=$(sudo -u "$misskey_user" XDG_RUNTIME_DIR=/run/user/$m_uid DOCKER_HOST=unix:///run/user/$m_uid/docker.sock docker run -d -p $misskey_port:$misskey_port --add-host=$misskey_localhost:$docker_host_ip -v "/home/$misskey_user/$misskey_directory/files":/calckey/files -v "/home/$misskey_user/$misskey_directory/.config/default.yml":/calckey/.config/default.yml:ro --restart unless-stopped -t "$docker_repository");
 echo "$docker_container";
 su "$misskey_user" << MKEOF
 set -eu;
