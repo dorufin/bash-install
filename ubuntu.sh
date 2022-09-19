@@ -141,7 +141,7 @@ misskey_directory=calckey
 
 if [ $method != "docker_hub" ]; then
 	echo "Repository url where you want to install:"
-	read -r -p "> " -e -i "https://github.com/misskey-dev/misskey.git" repository;
+	read -r -p "> " -e -i "https://codeberg.org/thatonecalculator/calckey.git" repository;
 	echo "The name of a new directory to clone:"
 	read -r -p "> " -e -i "calckey" misskey_directory;
 	echo "Branch or Tag"
